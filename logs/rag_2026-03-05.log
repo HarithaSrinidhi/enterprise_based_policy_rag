@@ -1,0 +1,227 @@
+2026-03-05 11:09:38 | INFO     | chromadb.telemetry.product.posthog | Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2026-03-05 11:09:40 | WARNING  | __main__     | Unknown mode entered: 'd:\enterprise_rag\venv\scripts\activate'
+2026-03-05 11:09:40 | WARNING  | urllib3.connectionpool | Retrying (Retry(total=1, connect=1, read=2, redirect=None, status=None)) after connection broken by 'NameResolutionError("HTTPSConnection(host='us.i.posthog.com', port=443): Failed to resolve 'us.i.posthog.com' ([Errno 11001] getaddrinfo failed)")': /batch/
+2026-03-05 11:09:40 | WARNING  | urllib3.connectionpool | Retrying (Retry(total=0, connect=0, read=2, redirect=None, status=None)) after connection broken by 'NameResolutionError("HTTPSConnection(host='us.i.posthog.com', port=443): Failed to resolve 'us.i.posthog.com' ([Errno 11001] getaddrinfo failed)")': /batch/
+2026-03-05 11:09:41 | INFO     | backoff      | Backing off send_request(...) for 0.4s (requests.exceptions.ConnectionError: HTTPSConnectionPool(host='us.i.posthog.com', port=443): Max retries exceeded with url: /batch/ (Caused by NameResolutionError("HTTPSConnection(host='us.i.posthog.com', port=443): Failed to resolve 'us.i.posthog.com' ([Errno 11001] getaddrinfo failed)")))
+2026-03-05 11:09:41 | WARNING  | urllib3.connectionpool | Retrying (Retry(total=1, connect=1, read=2, redirect=None, status=None)) after connection broken by 'NameResolutionError("HTTPSConnection(host='us.i.posthog.com', port=443): Failed to resolve 'us.i.posthog.com' ([Errno 11001] getaddrinfo failed)")': /batch/
+2026-03-05 11:09:41 | WARNING  | urllib3.connectionpool | Retrying (Retry(total=0, connect=0, read=2, redirect=None, status=None)) after connection broken by 'NameResolutionError("HTTPSConnection(host='us.i.posthog.com', port=443): Failed to resolve 'us.i.posthog.com' ([Errno 11001] getaddrinfo failed)")': /batch/
+2026-03-05 11:09:41 | INFO     | backoff      | Backing off send_request(...) for 0.8s (requests.exceptions.ConnectionError: HTTPSConnectionPool(host='us.i.posthog.com', port=443): Max retries exceeded with url: /batch/ (Caused by NameResolutionError("HTTPSConnection(host='us.i.posthog.com', port=443): Failed to resolve 'us.i.posthog.com' ([Errno 11001] getaddrinfo failed)")))
+2026-03-05 11:09:42 | WARNING  | urllib3.connectionpool | Retrying (Retry(total=1, connect=1, read=2, redirect=None, status=None)) after connection broken by 'NameResolutionError("HTTPSConnection(host='us.i.posthog.com', port=443): Failed to resolve 'us.i.posthog.com' ([Errno 11001] getaddrinfo failed)")': /batch/
+2026-03-05 11:09:42 | WARNING  | urllib3.connectionpool | Retrying (Retry(total=0, connect=0, read=2, redirect=None, status=None)) after connection broken by 'NameResolutionError("HTTPSConnection(host='us.i.posthog.com', port=443): Failed to resolve 'us.i.posthog.com' ([Errno 11001] getaddrinfo failed)")': /batch/
+2026-03-05 11:09:42 | INFO     | backoff      | Backing off send_request(...) for 2.9s (requests.exceptions.ConnectionError: HTTPSConnectionPool(host='us.i.posthog.com', port=443): Max retries exceeded with url: /batch/ (Caused by NameResolutionError("HTTPSConnection(host='us.i.posthog.com', port=443): Failed to resolve 'us.i.posthog.com' ([Errno 11001] getaddrinfo failed)")))
+2026-03-05 11:09:45 | WARNING  | urllib3.connectionpool | Retrying (Retry(total=1, connect=1, read=2, redirect=None, status=None)) after connection broken by 'NameResolutionError("HTTPSConnection(host='us.i.posthog.com', port=443): Failed to resolve 'us.i.posthog.com' ([Errno 11001] getaddrinfo failed)")': /batch/
+2026-03-05 11:09:45 | WARNING  | urllib3.connectionpool | Retrying (Retry(total=0, connect=0, read=2, redirect=None, status=None)) after connection broken by 'NameResolutionError("HTTPSConnection(host='us.i.posthog.com', port=443): Failed to resolve 'us.i.posthog.com' ([Errno 11001] getaddrinfo failed)")': /batch/
+2026-03-05 11:09:45 | ERROR    | backoff      | Giving up send_request(...) after 4 tries (requests.exceptions.ConnectionError: HTTPSConnectionPool(host='us.i.posthog.com', port=443): Max retries exceeded with url: /batch/ (Caused by NameResolutionError("HTTPSConnection(host='us.i.posthog.com', port=443): Failed to resolve 'us.i.posthog.com' ([Errno 11001] getaddrinfo failed)")))
+2026-03-05 11:13:54 | INFO     | chromadb.telemetry.product.posthog | Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2026-03-05 11:13:55 | WARNING  | urllib3.connectionpool | Retrying (Retry(total=1, connect=1, read=2, redirect=None, status=None)) after connection broken by 'NameResolutionError("HTTPSConnection(host='us.i.posthog.com', port=443): Failed to resolve 'us.i.posthog.com' ([Errno 11001] getaddrinfo failed)")': /batch/
+2026-03-05 11:13:55 | WARNING  | urllib3.connectionpool | Retrying (Retry(total=0, connect=0, read=2, redirect=None, status=None)) after connection broken by 'NameResolutionError("HTTPSConnection(host='us.i.posthog.com', port=443): Failed to resolve 'us.i.posthog.com' ([Errno 11001] getaddrinfo failed)")': /batch/
+2026-03-05 11:13:55 | INFO     | backoff      | Backing off send_request(...) for 0.7s (requests.exceptions.ConnectionError: HTTPSConnectionPool(host='us.i.posthog.com', port=443): Max retries exceeded with url: /batch/ (Caused by NameResolutionError("HTTPSConnection(host='us.i.posthog.com', port=443): Failed to resolve 'us.i.posthog.com' ([Errno 11001] getaddrinfo failed)")))
+2026-03-05 11:13:55 | WARNING  | urllib3.connectionpool | Retrying (Retry(total=1, connect=1, read=2, redirect=None, status=None)) after connection broken by 'NameResolutionError("HTTPSConnection(host='us.i.posthog.com', port=443): Failed to resolve 'us.i.posthog.com' ([Errno 11001] getaddrinfo failed)")': /batch/
+2026-03-05 11:13:55 | WARNING  | urllib3.connectionpool | Retrying (Retry(total=0, connect=0, read=2, redirect=None, status=None)) after connection broken by 'NameResolutionError("HTTPSConnection(host='us.i.posthog.com', port=443): Failed to resolve 'us.i.posthog.com' ([Errno 11001] getaddrinfo failed)")': /batch/
+2026-03-05 11:13:55 | INFO     | backoff      | Backing off send_request(...) for 1.1s (requests.exceptions.ConnectionError: HTTPSConnectionPool(host='us.i.posthog.com', port=443): Max retries exceeded with url: /batch/ (Caused by NameResolutionError("HTTPSConnection(host='us.i.posthog.com', port=443): Failed to resolve 'us.i.posthog.com' ([Errno 11001] getaddrinfo failed)")))
+2026-03-05 11:13:56 | WARNING  | urllib3.connectionpool | Retrying (Retry(total=1, connect=1, read=2, redirect=None, status=None)) after connection broken by 'NameResolutionError("HTTPSConnection(host='us.i.posthog.com', port=443): Failed to resolve 'us.i.posthog.com' ([Errno 11001] getaddrinfo failed)")': /batch/
+2026-03-05 11:13:57 | WARNING  | urllib3.connectionpool | Retrying (Retry(total=0, connect=0, read=2, redirect=None, status=None)) after connection broken by 'NameResolutionError("HTTPSConnection(host='us.i.posthog.com', port=443): Failed to resolve 'us.i.posthog.com' ([Errno 11001] getaddrinfo failed)")': /batch/
+2026-03-05 11:13:57 | INFO     | backoff      | Backing off send_request(...) for 3.5s (requests.exceptions.ConnectionError: HTTPSConnectionPool(host='us.i.posthog.com', port=443): Max retries exceeded with url: /batch/ (Caused by NameResolutionError("HTTPSConnection(host='us.i.posthog.com', port=443): Failed to resolve 'us.i.posthog.com' ([Errno 11001] getaddrinfo failed)")))
+2026-03-05 11:14:00 | WARNING  | urllib3.connectionpool | Retrying (Retry(total=1, connect=1, read=2, redirect=None, status=None)) after connection broken by 'NameResolutionError("HTTPSConnection(host='us.i.posthog.com', port=443): Failed to resolve 'us.i.posthog.com' ([Errno 11001] getaddrinfo failed)")': /batch/
+2026-03-05 11:14:00 | WARNING  | urllib3.connectionpool | Retrying (Retry(total=0, connect=0, read=2, redirect=None, status=None)) after connection broken by 'NameResolutionError("HTTPSConnection(host='us.i.posthog.com', port=443): Failed to resolve 'us.i.posthog.com' ([Errno 11001] getaddrinfo failed)")': /batch/
+2026-03-05 11:14:00 | ERROR    | backoff      | Giving up send_request(...) after 4 tries (requests.exceptions.ConnectionError: HTTPSConnectionPool(host='us.i.posthog.com', port=443): Max retries exceeded with url: /batch/ (Caused by NameResolutionError("HTTPSConnection(host='us.i.posthog.com', port=443): Failed to resolve 'us.i.posthog.com' ([Errno 11001] getaddrinfo failed)")))
+2026-03-05 11:17:59 | INFO     | chromadb.telemetry.product.posthog | Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2026-03-05 11:18:23 | INFO     | __main__     | ==================================================
+2026-03-05 11:18:23 | INFO     | __main__     | BUILD MODE STARTED
+2026-03-05 11:18:23 | INFO     | __main__     | ==================================================
+2026-03-05 11:18:23 | INFO     | src.loader   | Scanning 'data/' for PDF files...
+2026-03-05 11:18:24 | INFO     | src.loader   | Loaded: Acceptable-Use-Policy.pdf (9 pages)
+2026-03-05 11:18:25 | INFO     | src.loader   | Loaded: acceptable-use-university-computers.pdf (4 pages)
+2026-03-05 11:18:25 | INFO     | src.loader   | Loaded: aup.pdf (4 pages)
+2026-03-05 11:18:25 | INFO     | src.loader   | Loaded: Policy_ComputerUsage.pdf (7 pages)
+2026-03-05 11:18:26 | INFO     | src.loader   | Loaded: SUNYOPT_IT_Acceptable_Use_Policy.pdf (5 pages)
+2026-03-05 11:18:26 | INFO     | src.loader   | Load complete. Total pages: 29 | Skipped files: 0
+2026-03-05 11:18:26 | INFO     | __main__     | Total pages loaded: 29
+2026-03-05 11:18:26 | INFO     | src.chunker  | Chunking 29 pages | chunk_size=600 | overlap=120
+2026-03-05 11:18:26 | INFO     | src.chunker  | Chunking complete. Total chunks created: 159
+2026-03-05 11:18:26 | INFO     | __main__     | Total chunks created: 159
+2026-03-05 11:18:26 | INFO     | src.embedder | Old collection deleted.
+2026-03-05 11:18:26 | INFO     | src.embedder | Starting batch embedding for 159 chunks using model 'mxbai-embed-large'...
+2026-03-05 11:21:20 | INFO     | httpx        | HTTP Request: POST http://127.0.0.1:11434/api/embed "HTTP/1.1 200 OK"
+2026-03-05 11:21:20 | INFO     | src.embedder | Batch embedding complete.
+2026-03-05 11:21:20 | INFO     | src.embedder | Inserted chunks 1–100 into vector DB.
+2026-03-05 11:21:21 | INFO     | src.embedder | Inserted chunks 101–159 into vector DB.
+2026-03-05 11:21:21 | INFO     | src.embedder | All 159 chunks inserted into ChromaDB successfully.
+2026-03-05 11:21:21 | INFO     | __main__     | Index build complete.
+2026-03-05 11:21:34 | INFO     | chromadb.telemetry.product.posthog | Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2026-03-05 11:21:51 | INFO     | chromadb.telemetry.product.posthog | Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2026-03-05 11:21:52 | INFO     | __main__     | ==================================================
+2026-03-05 11:21:52 | INFO     | __main__     | CHAT MODE STARTED
+2026-03-05 11:21:52 | INFO     | __main__     | ==================================================
+2026-03-05 11:22:40 | INFO     | src.rag      | Question received: "What is the purpose of the Acceptable Use Policy?"
+2026-03-05 11:22:40 | INFO     | httpx        | HTTP Request: POST http://127.0.0.1:11434/api/embed "HTTP/1.1 200 OK"
+2026-03-05 11:22:40 | INFO     | src.rag      | Reranking complete | Best distance: 0.47 | Threshold: 0.8
+2026-03-05 11:22:40 | INFO     | src.llm      | Initialising LLM: 'llama3' (temperature=0)
+2026-03-05 11:22:40 | INFO     | src.llm      | LLM ready.
+2026-03-05 11:24:07 | WARNING  | __main__     | Unknown mode entered: 'what are university electronic resources intended for?'
+2026-03-05 11:25:15 | INFO     | httpx        | HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2026-03-05 11:25:38 | INFO     | src.rag      | Answer generated | Confidence: 0.53 | Sources: ['Aup (Page 1)', 'Aup (Page 3)', 'Acceptable Use Policy (Page 3)']
+2026-03-05 11:25:57 | INFO     | chromadb.telemetry.product.posthog | Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2026-03-05 11:52:40 | INFO     | src.rag      | Question received: "Is installing unauthorized software allowed on university computers?"
+2026-03-05 11:52:45 | INFO     | httpx        | HTTP Request: POST http://127.0.0.1:11434/api/embed "HTTP/1.1 200 OK"
+2026-03-05 11:52:45 | INFO     | src.rag      | Reranking complete | Best distance: 0.44 | Threshold: 0.8
+2026-03-05 11:54:52 | INFO     | httpx        | HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2026-03-05 11:55:02 | INFO     | __main__     | ==================================================
+2026-03-05 11:55:02 | INFO     | __main__     | CHAT MODE STARTED
+2026-03-05 11:55:02 | INFO     | __main__     | ==================================================
+2026-03-05 11:55:08 | INFO     | src.rag      | Answer generated | Confidence: 0.56 | Sources: ['Acceptable Use University Computers (Page 2)', 'Sunyopt_It_Acceptable_Use_Policy (Page 3)', 'Policy_Computerusage (Page 3)']
+2026-03-05 11:55:14 | INFO     | src.rag      | Question received: "What should users do if they suspect a security breach?"
+2026-03-05 11:55:15 | INFO     | httpx        | HTTP Request: POST http://127.0.0.1:11434/api/embed "HTTP/1.1 200 OK"
+2026-03-05 11:55:15 | INFO     | src.rag      | Reranking complete | Best distance: 0.526 | Threshold: 0.8
+2026-03-05 11:55:15 | INFO     | src.llm      | Initialising LLM: 'llama3' (temperature=0)
+2026-03-05 11:55:15 | INFO     | src.llm      | LLM ready.
+2026-03-05 11:56:43 | INFO     | httpx        | HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2026-03-05 11:56:53 | INFO     | src.rag      | Answer generated | Confidence: 0.47 | Sources: ['Aup (Page 2)', 'Policy_Computerusage (Page 5)', 'Policy_Computerusage (Page 3)']
+2026-03-05 11:58:17 | INFO     | src.rag      | Question received: "Can university computers be used for personal commercial activities?"
+2026-03-05 11:58:17 | INFO     | httpx        | HTTP Request: POST http://127.0.0.1:11434/api/embed "HTTP/1.1 200 OK"
+2026-03-05 11:58:17 | INFO     | src.rag      | Reranking complete | Best distance: 0.581 | Threshold: 0.8
+2026-03-05 11:59:23 | INFO     | src.rag      | Question received: "What may happen if a user violates the Acceptable Use Policy?"
+2026-03-05 11:59:24 | INFO     | httpx        | HTTP Request: POST http://127.0.0.1:11434/api/embed "HTTP/1.1 200 OK"
+2026-03-05 11:59:24 | INFO     | src.rag      | Reranking complete | Best distance: 0.485 | Threshold: 0.8
+2026-03-05 11:59:38 | INFO     | httpx        | HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2026-03-05 11:59:41 | WARNING  | src.rag      | LLM returned no valid answer.
+2026-03-05 12:01:14 | INFO     | httpx        | HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2026-03-05 12:01:33 | INFO     | src.rag      | Answer generated | Confidence: 0.52 | Sources: ['Sunyopt_It_Acceptable_Use_Policy (Page 3)', 'Aup (Page 3)', 'Sunyopt_It_Acceptable_Use_Policy (Page 2)']
+2026-03-05 12:06:12 | INFO     | src.rag      | Question received: "What is the purpose of Illinois Tech's Acceptable Use Policy?"
+2026-03-05 12:06:17 | INFO     | httpx        | HTTP Request: POST http://127.0.0.1:11434/api/embed "HTTP/1.1 200 OK"
+2026-03-05 12:06:17 | INFO     | src.rag      | Reranking complete | Best distance: 0.211 | Threshold: 0.8
+2026-03-05 12:06:39 | INFO     | src.rag      | Question received: ". Can users share their passwords?"
+2026-03-05 12:06:39 | INFO     | httpx        | HTTP Request: POST http://127.0.0.1:11434/api/embed "HTTP/1.1 200 OK"
+2026-03-05 12:06:39 | INFO     | src.rag      | Reranking complete | Best distance: 0.675 | Threshold: 0.8
+2026-03-05 12:07:49 | INFO     | httpx        | HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2026-03-05 12:08:18 | INFO     | src.rag      | Answer generated | Confidence: 0.79 | Sources: ['Acceptable Use Policy (Page 9)', 'Acceptable Use Policy (Page 3)']
+2026-03-05 12:09:16 | INFO     | src.rag      | Question received: "Can users share confidential data with AI platforms?"
+2026-03-05 12:09:17 | INFO     | httpx        | HTTP Request: POST http://127.0.0.1:11434/api/embed "HTTP/1.1 200 OK"
+2026-03-05 12:09:17 | INFO     | src.rag      | Reranking complete | Best distance: 0.498 | Threshold: 0.8
+2026-03-05 12:10:05 | INFO     | httpx        | HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2026-03-05 12:10:12 | INFO     | src.rag      | Answer generated | Confidence: 0.33 | Sources: ['Aup (Page 2)', 'Sunyopt_It_Acceptable_Use_Policy (Page 3)', 'Policy_Computerusage (Page 3)']
+2026-03-05 12:11:43 | INFO     | httpx        | HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2026-03-05 12:11:53 | INFO     | src.rag      | Answer generated | Confidence: 0.5 | Sources: ['Acceptable Use Policy (Page 8)', 'Acceptable Use Policy (Page 7)']
+2026-03-05 12:13:16 | INFO     | src.rag      | Question received: "How often must users complete Cybersecurity Awareness Training?"
+2026-03-05 12:13:16 | INFO     | httpx        | HTTP Request: POST http://127.0.0.1:11434/api/embed "HTTP/1.1 200 OK"
+2026-03-05 12:13:16 | INFO     | src.rag      | Reranking complete | Best distance: 0.59 | Threshold: 0.8
+2026-03-05 12:14:32 | INFO     | src.rag      | Question received: ". Why does the University of Virgin Islands publish the Acceptable Use Policy?"
+2026-03-05 12:14:33 | INFO     | httpx        | HTTP Request: POST http://127.0.0.1:11434/api/embed "HTTP/1.1 200 OK"
+2026-03-05 12:14:33 | INFO     | src.rag      | Reranking complete | Best distance: 0.182 | Threshold: 0.8
+2026-03-05 12:14:58 | INFO     | httpx        | HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2026-03-05 12:15:10 | INFO     | src.rag      | Answer generated | Confidence: 0.41 | Sources: ['Acceptable Use Policy (Page 2)', 'Acceptable Use Policy (Page 8)', 'Acceptable Use Policy (Page 3)']
+2026-03-05 12:16:31 | INFO     | httpx        | HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2026-03-05 12:16:44 | INFO     | src.rag      | Answer generated | Confidence: 0.82 | Sources: ['Policy_Computerusage (Page 1)', 'Aup (Page 1)', 'Aup (Page 4)']
+2026-03-05 13:58:12 | INFO     | src.rag      | Question received: "What must users do if their account is compromised at Radford University?"
+2026-03-05 13:58:18 | INFO     | httpx        | HTTP Request: POST http://127.0.0.1:11434/api/embed "HTTP/1.1 200 OK"
+2026-03-05 13:58:18 | INFO     | src.rag      | Reranking complete | Best distance: 0.481 | Threshold: 0.8
+2026-03-05 14:00:57 | INFO     | httpx        | HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2026-03-05 14:01:02 | WARNING  | src.rag      | LLM returned no valid answer.
+2026-03-05 14:01:31 | INFO     | src.rag      | Question received: "What must users do if their account is compromised at Radford University?"
+2026-03-05 14:01:32 | INFO     | httpx        | HTTP Request: POST http://127.0.0.1:11434/api/embed "HTTP/1.1 200 OK"
+2026-03-05 14:01:32 | INFO     | src.rag      | Reranking complete | Best distance: 0.481 | Threshold: 0.8
+2026-03-05 14:01:33 | INFO     | httpx        | HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2026-03-05 14:01:36 | WARNING  | src.rag      | LLM returned no valid answer.
+2026-03-05 14:01:59 | INFO     | src.rag      | Question received: "What is the email storage limit per user at University of Virgin Islands?"
+2026-03-05 14:02:00 | INFO     | httpx        | HTTP Request: POST http://127.0.0.1:11434/api/embed "HTTP/1.1 200 OK"
+2026-03-05 14:02:00 | INFO     | src.rag      | Reranking complete | Best distance: 0.602 | Threshold: 0.8
+2026-03-05 14:03:52 | INFO     | chromadb.telemetry.product.posthog | Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2026-03-05 14:04:11 | INFO     | httpx        | HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2026-03-05 14:04:20 | INFO     | src.rag      | Answer generated | Confidence: 0.4 | Sources: ['Aup (Page 2)', 'Aup (Page 1)', 'Aup (Page 4)']
+2026-03-05 14:05:02 | INFO     | src.rag      | Question received: "What must users do if their account is compromised at Radford University?"
+2026-03-05 14:05:02 | INFO     | httpx        | HTTP Request: POST http://127.0.0.1:11434/api/embed "HTTP/1.1 200 OK"
+2026-03-05 14:05:02 | INFO     | src.rag      | Reranking complete | Best distance: 0.481 | Threshold: 0.8
+2026-03-05 14:05:08 | INFO     | __main__     | ==================================================
+2026-03-05 14:05:08 | INFO     | __main__     | CHAT MODE STARTED
+2026-03-05 14:05:08 | INFO     | __main__     | ==================================================
+2026-03-05 14:05:23 | INFO     | src.rag      | Question received: "What are the sanctions for non-compliance at Illinois Tech?"
+2026-03-05 14:05:23 | INFO     | httpx        | HTTP Request: POST http://127.0.0.1:11434/api/embed "HTTP/1.1 200 OK"
+2026-03-05 14:05:24 | INFO     | src.rag      | Reranking complete | Best distance: 0.313 | Threshold: 0.8
+2026-03-05 14:05:24 | INFO     | src.llm      | Initialising LLM: 'llama3' (temperature=0)
+2026-03-05 14:05:24 | INFO     | src.llm      | LLM ready.
+2026-03-05 14:06:35 | INFO     | httpx        | HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2026-03-05 14:06:37 | WARNING  | src.rag      | LLM returned no valid answer.
+2026-03-05 14:08:03 | INFO     | httpx        | HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2026-03-05 14:08:18 | INFO     | src.rag      | Answer generated | Confidence: 0.69 | Sources: ['Acceptable Use Policy (Page 3)', 'Acceptable Use Policy (Page 8)']
+2026-03-05 15:00:27 | INFO     | chromadb.telemetry.product.posthog | Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2026-03-05 15:05:35 | INFO     | __main__     | ==================================================
+2026-03-05 15:05:35 | INFO     | __main__     | CHAT MODE STARTED
+2026-03-05 15:05:35 | INFO     | __main__     | ==================================================
+2026-03-05 15:05:40 | INFO     | src.rag      | Question received: "What are university electronic resources intended for?"
+2026-03-05 15:05:44 | INFO     | httpx        | HTTP Request: POST http://127.0.0.1:11434/api/embed "HTTP/1.1 200 OK"
+2026-03-05 15:05:44 | INFO     | src.rag      | ======================================================================
+2026-03-05 15:05:44 | INFO     | src.rag      | ALL RETRIEVED CHUNKS — ranked by distance + keyword overlap
+2026-03-05 15:05:44 | INFO     | src.rag      | ======================================================================
+2026-03-05 15:05:44 | INFO     | src.rag      |   Rank 01 | >>> CHOSEN | Distance: 0.613 | Confidence: 0.39 | Overlap: 2 words | Acceptable-Use-Policy.pdf — Page 4
+2026-03-05 15:05:44 | INFO     | src.rag      |            Preview: "law.   • Technology Resources refers to all technologies that produce, manipulate, store,  communicate, or disseminate i..."
+2026-03-05 15:05:45 | INFO     | src.rag      |   Rank 02 | >>> CHOSEN | Distance: 0.615 | Confidence: 0.39 | Overlap: 2 words | aup.pdf — Page 1
+2026-03-05 15:05:45 | INFO     | src.rag      |            Preview: "videoconference technologies and e -learning information resources, whether they are  individually controlled, handheld,..."
+2026-03-05 15:05:45 | INFO     | src.rag      |   Rank 03 | >>> CHOSEN | Distance: 0.621 | Confidence: 0.38 | Overlap: 2 words | aup.pdf — Page 2
+2026-03-05 15:05:45 | INFO     | src.rag      |            Preview: "user’s responsibility to know the copyright laws, including fair use of digitized works. Users can  get additional infor..."
+2026-03-05 15:05:45 | INFO     | src.rag      |   Rank 04 |     skipped | Distance:  0.64 | Confidence: 0.36 | Overlap: 3 words | aup.pdf — Page 2
+2026-03-05 15:05:45 | INFO     | src.rag      |            Preview: " Resources shall not be used to infringe u pon or otherwise impair, interfere with or violate any  copyright or other i..."
+2026-03-05 15:05:45 | INFO     | src.rag      |   Rank 05 |     skipped | Distance: 0.651 | Confidence: 0.35 | Overlap: 3 words | aup.pdf — Page 1
+2026-03-05 15:05:45 | INFO     | src.rag      |            Preview: "The University of the Virgin Islands has invested institutional resources, both monetary and human,  to  provide the ele..."
+2026-03-05 15:05:45 | INFO     | src.rag      |   Rank 06 |     skipped | Distance: 0.667 | Confidence: 0.33 | Overlap: 2 words | Acceptable-Use-Policy.pdf — Page 3
+2026-03-05 15:05:45 | INFO     | src.rag      |            Preview: "including devices, computers, networks, equipment, cyber security, applications, and cloud-based  infrastructure.   This..."
+2026-03-05 15:05:45 | INFO     | src.rag      |   Rank 07 |     skipped | Distance: 0.679 | Confidence: 0.32 | Overlap: 4 words | aup.pdf — Page 1
+2026-03-05 15:05:45 | INFO     | src.rag      |            Preview: "Acceptable Use Policy  University of the Virgin Islands     The University of the Virgin Islands’ intention for publishi..."
+2026-03-05 15:05:45 | INFO     | src.rag      |   Rank 08 |     skipped | Distance: 0.684 | Confidence: 0.32 | Overlap: 3 words | aup.pdf — Page 2
+2026-03-05 15:05:45 | INFO     | src.rag      |            Preview: "Acceptable Use Policy – Board Approved  (6/15/2013)  2    codes, all classroom equipment and all media equipment circula..."
+2026-03-05 15:05:45 | INFO     | src.rag      | ======================================================================
+2026-03-05 15:05:45 | INFO     | src.rag      | Reranking complete | Best distance: 0.613 | Threshold: 0.8
+2026-03-05 15:05:45 | INFO     | src.rag      | ----------------------------------------------------------------------
+2026-03-05 15:05:45 | INFO     | src.rag      | CONTEXT BEING SENT TO LLM (top 3 chunks after reranking):
+2026-03-05 15:05:45 | INFO     | src.rag      | ----------------------------------------------------------------------
+2026-03-05 15:05:45 | INFO     | src.rag      |   [Chunk 1] Source: Acceptable-Use-Policy.pdf — Page 4
+2026-03-05 15:05:45 | INFO     | src.rag      |   Content: law.   • Technology Resources refers to all technologies that produce, manipulate, store,  communicate, or disseminate information. These resources include wired and wireless  data, data at rest, video and voice networks, Virtual Private Networks (VPN), computers for  processing information, and other devices for storing, transmitting, and archiving  information. This includes equipment connected to these networks (regardless of ownership),  and equipment owned and/or registered to the University and its affiliates for all University  locations.  Acceptable and Authorized Usage
+2026-03-05 15:05:45 | INFO     | src.rag      |   ------------------------------------------------------------------
+2026-03-05 15:05:45 | INFO     | src.rag      |   [Chunk 2] Source: aup.pdf — Page 1
+2026-03-05 15:05:45 | INFO     | src.rag      |   Content: videoconference technologies and e -learning information resources, whether they are  individually controlled, handheld, shared, stand alone, or networked;   All information maintained in any form and in any medium within the University’s computer  resources, and    All University voice, video and data networks, email systems, telecommunications infrastructure,  communications systems and services and physical facilities including all hardware, software,  applications, databases and storage media. This includes telephone use and long distance access
+2026-03-05 15:05:45 | INFO     | src.rag      |   ------------------------------------------------------------------
+2026-03-05 15:05:45 | INFO     | src.rag      |   [Chunk 3] Source: aup.pdf — Page 2
+2026-03-05 15:05:45 | INFO     | src.rag      |   Content: user’s responsibility to know the copyright laws, including fair use of digitized works. Users can  get additional information from the University’s Libraries or the Centers for Excellence in Teaching  and Learning if they are unclear about the limits of use.    Stakeholders shall avoid any action that interferes with the efficient operation of resources or  impedes the flow of information necessary for academic or administrative operations of the  University.   Stakeholders shall protect their computer resources such as passwords from unauthorized use.
+2026-03-05 15:05:45 | INFO     | src.rag      |   ------------------------------------------------------------------
+2026-03-05 15:05:45 | INFO     | src.rag      | ----------------------------------------------------------------------
+2026-03-05 15:05:45 | INFO     | src.llm      | Initialising LLM: 'llama3' (temperature=0)
+2026-03-05 15:05:45 | INFO     | src.llm      | LLM ready.
+2026-03-05 15:07:56 | INFO     | httpx        | HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2026-03-05 15:08:27 | INFO     | src.rag      | Answer generated | Confidence: 0.39 | Sources: ['Aup (Page 2)', 'Aup (Page 1)', 'Acceptable Use Policy (Page 4)']
+2026-03-05 15:09:33 | INFO     | src.rag      | Question received: "Can users share credentials to their individually assigned accounts at Radford University?"
+2026-03-05 15:09:33 | INFO     | httpx        | HTTP Request: POST http://127.0.0.1:11434/api/embed "HTTP/1.1 200 OK"
+2026-03-05 15:09:33 | INFO     | src.rag      | ======================================================================
+2026-03-05 15:09:33 | INFO     | src.rag      | ALL RETRIEVED CHUNKS — ranked by distance + keyword overlap
+2026-03-05 15:09:33 | INFO     | src.rag      | ======================================================================
+2026-03-05 15:09:33 | INFO     | src.rag      |   Rank 01 | >>> CHOSEN | Distance: 0.633 | Confidence: 0.37 | Overlap: 3 words | acceptable-use-university-computers.pdf — Page 2
+2026-03-05 15:09:33 | INFO     | src.rag      |            Preview: "has not been authorized by the University Information Security Office.   14. Users must not monopolize or waste Universi..."
+2026-03-05 15:09:33 | INFO     | src.rag      |   Rank 02 | >>> CHOSEN | Distance:  0.65 | Confidence: 0.35 | Overlap: 8 words | acceptable-use-university-computers.pdf — Page 1
+2026-03-05 15:09:33 | INFO     | src.rag      |            Preview: "federal, state, or local laws.   B. Specific requirements and responsibilities of users for access to University informa..."
+2026-03-05 15:09:33 | INFO     | src.rag      |   Rank 03 | >>> CHOSEN | Distance: 0.673 | Confidence: 0.33 | Overlap: 6 words | Acceptable-Use-Policy.pdf — Page 5
+2026-03-05 15:09:33 | INFO     | src.rag      |            Preview: "maintaining proper identification of their email by properly identifying sender.   • The use of unauthorized credentials..."
+2026-03-05 15:09:33 | INFO     | src.rag      |   Rank 04 |     skipped | Distance: 0.677 | Confidence: 0.32 | Overlap: 3 words | acceptable-use-university-computers.pdf — Page 1
+2026-03-05 15:09:33 | INFO     | src.rag      |            Preview: "Policy Title:  Acceptable Use Policy for University  Computers and Information Technology Systems Effective Date:   9/3/..."
+2026-03-05 15:09:33 | INFO     | src.rag      |   Rank 05 |     skipped | Distance: 0.682 | Confidence: 0.32 | Overlap: 3 words | acceptable-use-university-computers.pdf — Page 3
+2026-03-05 15:09:33 | INFO     | src.rag      |            Preview: "Acceptable Use Policy for University Computers and Information Technology Systems Page 3 of 4  20. Users must observe th..."
+2026-03-05 15:09:33 | INFO     | src.rag      |   Rank 06 |     skipped | Distance: 0.699 | Confidence: 0.3 | Overlap: 2 words | Policy_ComputerUsage.pdf — Page 3
+2026-03-05 15:09:33 | INFO     | src.rag      |            Preview: "you.   2. You agree not to intentionally seek out information about, copy, or modify  password files, other users' files..."
+2026-03-05 15:09:33 | INFO     | src.rag      |   Rank 07 |     skipped | Distance: 0.735 | Confidence: 0.26 | Overlap: 4 words | Policy_ComputerUsage.pdf — Page 4
+2026-03-05 15:09:33 | INFO     | src.rag      |            Preview: "files publicly available elsewhere. It is meant for current class work,  research and development projects, and temporar..."
+2026-03-05 15:09:33 | INFO     | src.rag      |   Rank 08 |     skipped | Distance: 0.739 | Confidence: 0.26 | Overlap: 4 words | Acceptable-Use-Policy.pdf — Page 5
+2026-03-05 15:09:33 | INFO     | src.rag      |            Preview: "breaching security, using unauthorized licensed software, deploying malware, or creating  programs, web forms, or other..."
+2026-03-05 15:09:33 | INFO     | src.rag      | ======================================================================
+2026-03-05 15:09:33 | INFO     | src.rag      | Reranking complete | Best distance: 0.633 | Threshold: 0.8
+2026-03-05 15:09:33 | INFO     | src.rag      | ----------------------------------------------------------------------
+2026-03-05 15:09:33 | INFO     | src.rag      | CONTEXT BEING SENT TO LLM (top 3 chunks after reranking):
+2026-03-05 15:09:33 | INFO     | src.rag      | ----------------------------------------------------------------------
+2026-03-05 15:09:33 | INFO     | src.rag      |   [Chunk 1] Source: acceptable-use-university-computers.pdf — Page 2
+2026-03-05 15:09:33 | INFO     | src.rag      |   Content: has not been authorized by the University Information Security Office.   14. Users must not monopolize or waste University resources such as network bandwidth,  disk storage, printer paper, etc.   15. Users must report possible violations of this policy, security violations, or security  problems to the University by sending an email to the University’s Information Security  Office at itsecurity@radford.edu.   16. Users must assist University officials with the investigation of violations of University  computing policies.
+2026-03-05 15:09:33 | INFO     | src.rag      |   ------------------------------------------------------------------
+2026-03-05 15:09:33 | INFO     | src.rag      |   [Chunk 2] Source: acceptable-use-university-computers.pdf — Page 1
+2026-03-05 15:09:33 | INFO     | src.rag      |   Content: federal, state, or local laws.   B. Specific requirements and responsibilities of users for access to University information  systems are as follows:   1. Users are responsible for all activity that occurs in or through their accounts and/or their  computers or network enabled devices, whether personally or University owned.   2. Users must not share credentials to their individually assigned accounts.   3. If an account has been compromised, users must follow the instructions provided by the  University’s Information Security Office or Technology Assistance Center (TAC).  Accounts
+2026-03-05 15:09:34 | INFO     | src.rag      |   ------------------------------------------------------------------
+2026-03-05 15:09:34 | INFO     | src.rag      |   [Chunk 3] Source: Acceptable-Use-Policy.pdf — Page 5
+2026-03-05 15:09:34 | INFO     | src.rag      |   Content: maintaining proper identification of their email by properly identifying sender.   • The use of unauthorized credentials for which users are not explicitly granted or an attempt to  capture credentials to access unauthorized accounts is prohibited. To either share passwords  or enable any unauthorized access to Technology Resources is a direct violation and may  result in sanctions.   • Non-Illinois Tech users, such as contractors and program guests, must request “Friends User  Role” to obtain access to the University’s systems and networks, regardless of ownership of
+2026-03-05 15:09:34 | INFO     | src.rag      |   ------------------------------------------------------------------
+2026-03-05 15:09:34 | INFO     | src.rag      | ----------------------------------------------------------------------
+2026-03-05 15:11:28 | INFO     | httpx        | HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2026-03-05 15:11:35 | INFO     | src.rag      | Answer generated | Confidence: 0.37 | Sources: ['Acceptable Use Policy (Page 5)', 'Acceptable Use University Computers (Page 1)', 'Acceptable Use University Computers (Page 2)']
