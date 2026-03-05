@@ -1,7 +1,9 @@
 venv/
 __pycache__/
 *.pyc
-.env
-.ipynb_checkpoints
+.venv
 logs/
 *.log
+.ipynb_checkpoints
+chroma/
+vectorstore/
