@@ -1,174 +1,35 @@
-# import re
-# import os
-# from src.retriever import retrieve
-# from src.llm import get_llm
-# from src.config import RELEVANCE_THRESHOLD
-# from src.logger import get_logger
-# from langchain_core.prompts import ChatPromptTemplate
-
-# logger = get_logger(__name__)
-
-
-# # -----------------------------
-# # Sentence Filtering
-# # -----------------------------
-# def filter_sentences(context):
-#     sentences = re.split(r'(?<=[.!?])\s+', context)
-#     filtered = [s.strip() for s in sentences if len(s.strip()) >= 15]
-#     removed = len(sentences) - len(filtered)
-#     if removed:
-#         logger.debug(f"Sentence filter removed {removed} short fragments.")
-#     return "\n".join(filtered)
-
-
-# # -----------------------------
-# # LLM Answer Extraction
-# # -----------------------------
-# def extract_answer(context, question):
-
-#     llm = get_llm()
-
-#     prompt = ChatPromptTemplate.from_template("""
-# You are a precise assistant. Answer the question using ONLY the information provided in the Context below.
-# Be concise and direct. Do not add any information that is not present in the Context.
-# Return the FULL sentence that explains the rule or restriction.
-# Never return single words like "Yes." or "No."
-# Always include the complete policy statement.
-
-# If the answer cannot be found in the Context, respond with exactly:
-# REFUSED: No policy found
-
-# Context:
-# {context}
-
-# Question:
-# {question}
-
-# Answer:
-# """)
-
-#     chain = prompt | llm
-
-#     logger.debug("Sending context + question to LLM...")
-
-#     try:
-#         response = chain.invoke({"context": context, "question": question})
-#         logger.debug("LLM response received.")
-#         return response.content.strip()
-#     except Exception as e:
-#         logger.error(f"LLM inference failed: {e}")
-#         return "REFUSED: No policy found"
-
-
-# # -----------------------------
-# # Extract Source Citations
-# # -----------------------------
-# def extract_sources(metas):
-#     sources = []
-#     for meta in metas:
-#         if meta is None:
-#             continue
-#         source = meta.get("source", "Unknown Document")
-#         source = os.path.basename(source).replace("-", " ").replace(".pdf", "").title()
-#         page = meta.get("page")
-#         if page is not None:
-#             sources.append(f"{source} (Page {page + 1})")
-#         else:
-#             sources.append(source)
-#     return list(set(sources))
-
-
-# # -----------------------------
-# # RAG Pipeline
-# # -----------------------------
-# def rag_answer(question):
-
-#     logger.info(f"Question received: \"{question}\"")
-
-#     results = retrieve(question)
-
-#     docs = results["documents"][0]
-#     metas = results["metadatas"][0]
-#     scores = results["distances"][0]
-
-#     if not docs:
-#         logger.warning("No documents returned from retrieval.")
-#         return {"answer": "REFUSED: No policy found", "sources": [], "confidence": 0, "distance": None}
-
-#     # Rerank across all retrieved chunks
-#     question_words = set(question.lower().split())
-#     scored = []
-#     for i, (doc, score) in enumerate(zip(docs, scores)):
-#         doc_words = set(doc.lower().split())
-#         overlap = len(question_words.intersection(doc_words))
-#         scored.append((score, -overlap, i, doc, metas[i]))
-
-#     scored.sort(key=lambda x: (x[0], x[1]))
-#     best_score = scored[0][0]
-
-#     logger.info(f"Reranking complete | Best distance: {round(best_score, 3)} | Threshold: {RELEVANCE_THRESHOLD}")
-
-#     if best_score > RELEVANCE_THRESHOLD:
-#         logger.warning(f"Best distance {round(best_score, 3)} exceeds threshold {RELEVANCE_THRESHOLD} — refusing answer.")
-#         return {"answer": "REFUSED: No policy found", "sources": [], "confidence": 0, "distance": round(best_score, 3)}
-
-#     # Build context from top 3 reranked chunks
-#     top_chunks = scored[:3]
-#     top_docs = [entry[3] for entry in top_chunks]
-#     top_metas = [entry[4] for entry in top_chunks]
-
-#     context = "\n\n".join(top_docs)
-#     context = filter_sentences(context)
-
-#     answer = extract_answer(context, question)
-
-#     if not answer or answer == "REFUSED: No policy found":
-#         logger.warning("LLM returned no valid answer.")
-#         return {"answer": "REFUSED: No policy found", "sources": [], "confidence": 0, "distance": round(best_score, 3)}
-
-#     confidence = round(1 - best_score, 2)
-#     sources = extract_sources(top_metas)
-
-#     logger.info(f"Answer generated | Confidence: {confidence} | Sources: {sources}")
-
-#     return {
-#         "answer": answer,
-#         "sources": sources,
-#         "confidence": confidence,
-#         "distance": round(best_score, 3)
-#     }
-
-
 import re
 import os
 from src.retriever import retrieve
 from src.llm import get_llm
-from src.config import RELEVANCE_THRESHOLD
+from src.config import RELEVANCE_THRESHOLD, RERANKER_TOP_N
 from src.logger import get_logger
+from src.intent_agent import classify_intent, INTENT_POLICY
+from src.rewriter_agent import rewrite_query
+from src.validator_agent import validate_answer
 from langchain_core.prompts import ChatPromptTemplate
 
 logger = get_logger(__name__)
 
 
-# -----------------------------
-# Sentence Filtering
-# -----------------------------
+# --------------------------------------------------
+# Utility → clean context a bit before giving to LLM
+# removes very small sentences which are usually noise
+# --------------------------------------------------
 def filter_sentences(context):
     sentences = re.split(r'(?<=[.!?])\s+', context)
     filtered = [s.strip() for s in sentences if len(s.strip()) >= 15]
-    removed = len(sentences) - len(filtered)
-    if removed:
-        logger.debug(f"Sentence filter removed {removed} short fragments.")
     return "\n".join(filtered)
 
 
-# -----------------------------
-# LLM Answer Extraction
-# -----------------------------
+# --------------------------------------------------
+# This function is responsible for final answer generation
+# LLM is strictly forced to use only retrieved context
+# --------------------------------------------------
 def extract_answer(context, question):
-
     llm = get_llm()
 
+    # simple controlled prompt to reduce hallucination
     prompt = ChatPromptTemplate.from_template("""
 You are a policy assistant. Answer the question using ONLY the context provided below.
 
@@ -189,146 +50,214 @@ Answer:
 
     chain = prompt | llm
 
-    logger.debug("Sending context + question to LLM...")
-
     try:
         response = chain.invoke({"context": context, "question": question})
-        logger.debug("LLM response received.")
         return response.content.strip()
     except Exception as e:
         logger.error(f"LLM inference failed: {e}")
         return "REFUSED: No policy found"
 
 
-# -----------------------------
-# Extract Source Citations
-# -----------------------------
+# --------------------------------------------------
+# Extract readable document names + page numbers
+# used for showing citations in final output
+# --------------------------------------------------
 def extract_sources(metas):
     sources = []
+
     for meta in metas:
         if meta is None:
             continue
+
         source = meta.get("source", "Unknown Document")
-        source = os.path.basename(source).replace("-", " ").replace(".pdf", "").title()
+
+        # clean file name → make it presentable
+        source = os.path.basename(source)\
+                    .replace("-", " ")\
+                    .replace(".pdf", "")\
+                    .title()
+
         page = meta.get("page")
+
         if page is not None:
             sources.append(f"{source} (Page {page + 1})")
         else:
             sources.append(source)
+
     return list(set(sources))
 
 
-# -----------------------------
-# RAG Pipeline
-# -----------------------------
+# --------------------------------------------------
+# MAIN RAG FLOW
+# Intent Agent → Query Rewrite → Retrieval → LLM → Validation
+# --------------------------------------------------
 def rag_answer(question):
 
     logger.info(f"Question received: \"{question}\"")
+    agent_trace = []
 
-    results = retrieve(question)
+    # ---------- Agent 1 : Intent detection ----------
+    # decides whether question is policy related or general chat
+    intent_result = classify_intent(question)
+    intent = intent_result["intent"]
 
-    docs   = results["documents"][0]
-    metas  = results["metadatas"][0]
+    agent_trace.append({
+        "agent": "Intent Classifier",
+        "input": question,
+        "output": intent,
+        "detail": f"Classified as: {intent}"
+    })
+
+    logger.info(f"[Agent 1] Intent: {intent}")
+
+    # if not policy → skip heavy RAG pipeline and respond directly
+    if intent != INTENT_POLICY:
+        logger.info(f"[Agent 1] Non-policy — skipping RAG.")
+        return {
+            "answer": intent_result["response"],
+            "sources": [],
+            "confidence": None,
+            "distance": None,
+            "intent": intent,
+            "rewritten": None,
+            "validation": None,
+            "agent_trace": agent_trace
+        }
+
+    # ---------- Agent 2 : Query rewriting ----------
+    # improves search quality (expands vague questions etc.)
+    rewrite_result = rewrite_query(question)
+    search_query = rewrite_result["rewritten"]
+
+    agent_trace.append({
+        "agent": "Query Rewriter",
+        "input": question,
+        "output": search_query,
+        "detail": f"Rewritten: {'Yes' if rewrite_result['changed'] else 'No'}"
+    })
+
+    logger.info(f"[Agent 2] Search query: \"{search_query}\"")
+
+    # ---------- Vector retrieval ----------
+    results = retrieve(search_query)
+
+    docs = results["documents"][0]
+    metas = results["metadatas"][0]
     scores = results["distances"][0]
 
+    # nothing retrieved → hard refusal
     if not docs:
         logger.warning("No documents returned from retrieval.")
-        return {"answer": "REFUSED: No policy found", "sources": [], "confidence": 0, "distance": None}
+        return {
+            "answer": "REFUSED: No policy found",
+            "sources": [],
+            "confidence": 0,
+            "distance": None,
+            "intent": intent,
+            "rewritten": search_query,
+            "validation": None,
+            "agent_trace": agent_trace
+        }
 
-    # -----------------------------
-    # Rerank across ALL retrieved chunks
-    # -----------------------------
-    question_words = set(question.lower().split())
-    scored = []
-    for i, (doc, score) in enumerate(zip(docs, scores)):
-        doc_words = set(doc.lower().split())
-        overlap   = len(question_words.intersection(doc_words))
-        scored.append((score, -overlap, i, doc, metas[i]))
+    # results already reranked inside retriever using cross-encoder
+    best_score = scores[0]
 
-    scored.sort(key=lambda x: (x[0], x[1]))
-    best_score = scored[0][0]
+    logger.info(
+        f"Best distance (post-rerank): {round(best_score,3)} | "
+        f"Threshold: {RELEVANCE_THRESHOLD}"
+    )
 
-    # -----------------------------
-    # LOG ALL CHUNKS WITH SCORES
-    # -----------------------------
-    logger.info("=" * 70)
-    logger.info(f"ALL RETRIEVED CHUNKS — ranked by distance + keyword overlap")
-    logger.info("=" * 70)
-
-    for rank, entry in enumerate(scored):
-        chunk_distance   = entry[0]
-        chunk_overlap    = -entry[1]
-        chunk_index      = entry[2]
-        chunk_text       = entry[3]
-        chunk_meta       = entry[4]
-        chunk_confidence = round(1 - chunk_distance, 2)
-        chunk_source     = os.path.basename(chunk_meta.get("source", "Unknown")) if chunk_meta else "Unknown"
-        chunk_page       = (chunk_meta.get("page", 0) or 0) + 1 if chunk_meta else "?"
-        label            = ">>> CHOSEN" if rank < 3 else "    skipped"
-
-        logger.info(
-            f"  Rank {rank+1:02d} | {label} | "
-            f"Distance: {round(chunk_distance, 3):5} | "
-            f"Confidence: {chunk_confidence} | "
-            f"Overlap: {chunk_overlap} words | "
-            f"{chunk_source} — Page {chunk_page}"
-        )
-        # Preview first 120 chars of chunk text
-        preview = chunk_text[:120].strip().replace("\n", " ")
-        logger.info(f"           Preview: \"{preview}...\"")
-
-    logger.info("=" * 70)
-    logger.info(f"Reranking complete | Best distance: {round(best_score, 3)} | Threshold: {RELEVANCE_THRESHOLD}")
-
+    # low relevance → safer to refuse
     if best_score > RELEVANCE_THRESHOLD:
-        logger.warning(f"Best distance {round(best_score, 3)} exceeds threshold {RELEVANCE_THRESHOLD} — refusing answer.")
-        return {"answer": "REFUSED: No policy found", "sources": [], "confidence": 0, "distance": round(best_score, 3)}
+        logger.warning("Distance exceeds threshold — refusing.")
+        return {
+            "answer": "REFUSED: No policy found",
+            "sources": [],
+            "confidence": 0,
+            "distance": round(best_score, 3),
+            "intent": intent,
+            "rewritten": search_query,
+            "validation": None,
+            "agent_trace": agent_trace
+        }
 
-    # -----------------------------
-    # Build context from top 3 reranked chunks
-    # -----------------------------
-    top_chunks = scored[:3]
-    top_docs   = [entry[3] for entry in top_chunks]
-    top_metas  = [entry[4] for entry in top_chunks]
+    # build final context from top reranked chunks
+    top_docs = docs[:RERANKER_TOP_N]
+    top_metas = metas[:RERANKER_TOP_N]
 
-    # -----------------------------
-    # LOG EXACT CONTEXT SENT TO LLM
-    # -----------------------------
-    logger.info("-" * 70)
-    logger.info("CONTEXT BEING SENT TO LLM (top 3 chunks after reranking):")
-    logger.info("-" * 70)
-    for i, (doc, meta) in enumerate(zip(top_docs, top_metas)):
-        src  = os.path.basename(meta.get("source", "Unknown")) if meta else "Unknown"
-        page = (meta.get("page", 0) or 0) + 1 if meta else "?"
-        logger.info(f"  [Chunk {i+1}] Source: {src} — Page {page}")
-        logger.info(f"  Content: {doc.strip().replace(chr(10), ' ')}")
-        logger.info(f"  {'-'*66}")
-    logger.info("-" * 70)
+    context = filter_sentences("\n\n".join(top_docs))
 
-    context = "\n\n".join(top_docs)
-    context  = filter_sentences(context)
-
+    # ---------- LLM answer generation ----------
     answer = extract_answer(context, question)
 
+    # fallback → sometimes LLM refuses even when chunk is strong
     if not answer or answer == "REFUSED: No policy found":
-        # Fallback: if LLM refused but distance is strong, serve best raw chunk
-        if best_score < 0.55:
-            fallback_answer = scored[0][3][:500]
-            logger.warning(f"LLM refused but distance {round(best_score,3)} is strong — using raw chunk as fallback.")
-            confidence = round(1 - best_score, 2)
-            sources    = extract_sources([scored[0][4]])
-            return {"answer": fallback_answer, "sources": sources, "confidence": confidence, "distance": round(best_score, 3)}
-        logger.warning("LLM returned no valid answer and distance too weak for fallback.")
-        return {"answer": "REFUSED: No policy found", "sources": [], "confidence": 0, "distance": round(best_score, 3)}
+        if best_score < 0.75:
+            logger.warning("LLM refused but chunk seems strong — using fallback.")
+            return {
+                "answer": docs[0][:500],
+                "sources": extract_sources([metas[0]]),
+                "confidence": round(1 - best_score, 2),
+                "distance": round(best_score, 3),
+                "intent": intent,
+                "rewritten": search_query,
+                "validation": None,
+                "agent_trace": agent_trace
+            }
 
+        return {
+            "answer": "REFUSED: No policy found",
+            "sources": [],
+            "confidence": 0,
+            "distance": round(best_score, 3),
+            "intent": intent,
+            "rewritten": search_query,
+            "validation": None,
+            "agent_trace": agent_trace
+        }
+
+    # ---------- Agent 3 : Answer validation ----------
+    # double check whether answer is actually grounded in context
+    validation = validate_answer(answer, context, question)
+
+    agent_trace.append({
+        "agent": "Answer Validator",
+        "input": answer[:100] + "...",
+        "output": validation["verdict"],
+        "detail": validation["reason"]
+    })
+
+    logger.info(f"[Agent 3] Verdict: {validation['verdict']}")
+
+    # hallucination detected → refuse
+    if not validation["valid"]:
+        logger.warning("Validator flagged hallucination — refusing.")
+        return {
+            "answer": "REFUSED: Answer could not be verified against source documents.",
+            "sources": [],
+            "confidence": 0,
+            "distance": round(best_score, 3),
+            "intent": intent,
+            "rewritten": search_query,
+            "validation": validation,
+            "agent_trace": agent_trace
+        }
+
+    # final confidence calculation
     confidence = round(1 - best_score, 2)
-    sources    = extract_sources(top_metas)
+    sources = extract_sources(top_metas)
 
-    logger.info(f"Answer generated | Confidence: {confidence} | Sources: {sources}")
+    logger.info(
+        f"Final answer ready | Confidence: {confidence} | Sources: {sources}"
+    )
 
     return {
-        "answer":     answer,
-        "sources":    sources,
+        "answer": answer,
+        "sources": sources,
         "confidence": confidence,
-        "distance":   round(best_score, 3)
+        "distance": round(best_score, 3),
+        "intent": intent,
+        "rewritten": search_query if rewrite_result["changed"] else None,
+        "validation": validation,
+        "agent_trace": agent_trace
     }
