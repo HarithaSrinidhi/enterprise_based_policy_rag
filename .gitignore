@@ -8,3 +8,4 @@ logs/
 chroma/
 vectorstore/
 .env
+vector_db
